@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     // Initialize our Shape Vars
     var greenSquare: UIView?
     var redSquare: UIView?
+    var animator: UIDynamicAnimator?
     
     
     
@@ -31,7 +32,18 @@ class ViewController: UIViewController {
         // Add them to the screen
         self.view.addSubview(greenSquare!)
         self.view.addSubview(redSquare!)
+        
+        // Initialize the animator
+        animator = UIDynamicAnimator(referenceView: self.view)
+        
+        // Add gravity
+        let gravity = UIGravityBehavior(items: [greenSquare!, redSquare!])
+        let direction = CGVectorMake(0.0, 1.0)
+        
     
+        // Link the animator with the behavior
+        animator?.addBehavior(gravity)
+        
     }
 
 
