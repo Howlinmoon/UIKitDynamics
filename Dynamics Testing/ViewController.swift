@@ -40,10 +40,18 @@ class ViewController: UIViewController {
         let gravity = UIGravityBehavior(items: [greenSquare!, redSquare!])
         let direction = CGVectorMake(0.0, 1.0)
         
+        // Collision Detection
+        let boundaries = UICollisionBehavior(items: [greenSquare!, redSquare!])
+        boundaries.translatesReferenceBoundsIntoBoundary = true
+        
+        // Elasticity
+        let bounce = UIDynamicItemBehavior(items: [greenSquare!, redSquare!])
+        bounce.elasticity = 0.8
     
         // Link the animator with the behavior
         animator?.addBehavior(gravity)
-        
+        animator?.addBehavior(boundaries)
+        animator?.addBehavior(bounce)
     }
 
 
